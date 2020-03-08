@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import { GlobalStyle } from './config/styles';
 
 function App() {
-  const [currentTheme, setCurrentTheme] = useState(darkTheme);
+  const [currentTheme, setCurrentTheme] = useState(lightTheme);
   useEffect(() => {
     store.subscribe(() => {
       console.log(
