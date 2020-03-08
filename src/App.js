@@ -5,9 +5,10 @@ import Routes from './config/routes';
 import { lightTheme, darkTheme } from './config/themes';
 import { store } from './redux';
 import { Provider } from 'react-redux';
+import { GlobalStyle } from './config/styles';
 
 function App() {
-  const [currentTheme, setCurrentTheme] = useState(lightTheme);
+  const [currentTheme, setCurrentTheme] = useState(darkTheme);
   useEffect(() => {
     store.subscribe(() => {
       console.log(
@@ -21,6 +22,7 @@ function App() {
   return (
     <Provider store={store}>
       <ThemeProvider theme={currentTheme}>
+        <GlobalStyle />
         <Routes />
       </ThemeProvider>
     </Provider>

@@ -3,7 +3,7 @@ import { CHANGE_THEME } from '../actions/theme';
 import { lightTheme, darkTheme } from '../../config/themes';
 
 const initialState = {
-  currentTheme: lightTheme
+  currentTheme: darkTheme
 };
 
 export default (state = initialState, action) => {
