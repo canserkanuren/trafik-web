@@ -6,6 +6,7 @@ import { lightTheme, darkTheme } from './config/themes';
 import { store } from './redux';
 import { Provider } from 'react-redux';
 import { GlobalStyle } from './config/styles';
+import './config/translations';
 
 function App() {
   const [currentTheme, setCurrentTheme] = useState(lightTheme);

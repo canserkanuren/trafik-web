@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import ThemeToggle from '../components/themeToggle';
+import { withTranslation } from 'react-i18next';
 
-const HomeScreen = () => {
+const HomeScreen = ({ t }) => {
   return (
     <Container>
-      <span>Bonjour</span>
+      <span>{t('title')}</span>
       <Card>Bonjour a toi </Card>
       <Button>Coucou</Button>
       <ThemeToggle />
@@ -14,21 +15,21 @@ const HomeScreen = () => {
 };
 
 const Container = styled.div`
-  /* height: 100vh; */
+  height: 100vh;
   /* width: 100%; */
   display: flex;
   flex-direction: column;
 `;
 
 const Button = styled.button`
-  background-color: ${({ theme }) => theme.buttons};
+  background-color: ${({ theme }) => theme.tertiary};
   color: ${({ theme }) => theme.color};
 `;
 
 const Card = styled.div`
   height: 100px;
   width: 100px;
-  background-color: ${({ theme }) => theme.tertiary};
+  background-color: ${({ theme }) => theme.secondary};
 `;
 
-export default HomeScreen;
+export default withTranslation()(HomeScreen);
