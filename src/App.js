@@ -1,32 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import './App.css';
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import Routes from './config/routes';
 import { lightTheme, darkTheme } from './config/themes';
-import { store } from './redux';
-import { Provider } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { GlobalStyle } from './config/styles';
-import './config/translations';
 
 function App() {
-  const [currentTheme, setCurrentTheme] = useState(lightTheme);
-  useEffect(() => {
-    store.subscribe(() => {
-      console.log(
-        'App -> store.getState().theme.currentTheme',
-        store.getState()
-      );
-      setCurrentTheme(store.getState().theme.currentTheme);
-    });
-  });
+  const isDarkTheme = useSelector(state => state.theme.isDark);
 
   return (
-    <Provider store={store}>
-      <ThemeProvider theme={currentTheme}>
-        <GlobalStyle />
-        <Routes />
-      </ThemeProvider>
-    </Provider>
+    <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
+      <GlobalStyle />
+      <Routes />
+    </ThemeProvider>
   );
 }
 

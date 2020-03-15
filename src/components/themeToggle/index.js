@@ -1,28 +1,20 @@
 import React from 'react';
-import { bindActionCreators } from 'redux';
 import actions from '../../redux/actions';
-import { connect } from 'react-redux';
-import { darkTheme, lightTheme } from '../../config/themes';
+import { useDispatch } from 'react-redux';
 
 const ThemeToggle = props => {
+  const dispatch = useDispatch();
+
+  const changeTheme = (e, bool) => {
+    e.preventDefault();
+    dispatch(actions.theme.changeTheme(bool));
+  };
   return (
     <div>
-      <button onClick={() => props.actions.theme.changeTheme(lightTheme)}>
-        LightTheme
-      </button>
-      <button onClick={() => props.actions.theme.changeTheme(darkTheme)}>
-        DarkTheme
-      </button>
+      <button onClick={e => changeTheme(e, false)}>LightTheme</button>
+      <button onClick={e => changeTheme(e, true)}>DarkTheme</button>
     </div>
   );
 };
 
-const mapStateToProps = () => ({});
-
-const mapDispatchToProps = () => dispatch => ({
-  actions: {
-    theme: bindActionCreators(actions.theme, dispatch)
-  }
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ThemeToggle);
+export default ThemeToggle;

@@ -1,9 +1,7 @@
 import { CHANGE_THEME } from '../actions/theme';
 
-import { lightTheme, darkTheme } from '../../config/themes';
-
 const initialState = {
-  currentTheme: darkTheme
+  isDark: false
 };
 
 export default (state = initialState, action) => {
@@ -11,7 +9,7 @@ export default (state = initialState, action) => {
     case CHANGE_THEME:
       return {
         ...state,
-        currentTheme: action.payload
+        isDark: action.payload
       };
     default:
       return state;
