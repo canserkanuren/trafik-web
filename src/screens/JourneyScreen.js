@@ -1,6 +1,5 @@
-import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
-import { withTranslation } from 'react-i18next';
+import React, { useState } from 'react';
+import { useTranslation, withTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import JourneyLines from '../components/journey/journeyLines';
@@ -8,14 +7,11 @@ import JourneyStations from '../components/journey/journeyStations';
 import ThemeToggle from '../components/themeToggle';
 import Actions from '../redux/actions';
 
-const JourneyScreen = ({ t }) => {
+const JourneyScreen = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const selectedLines = useSelector(state => state.stations.stations);
   const [stations, setStations] = useState([]);
-
-  useEffect(() => {
-    console.log(stations);
-  }, [stations]);
 
   const onUpdateLine = async line => {
     await dispatch(Actions.stations.getStationsForLine({ id: line }));
@@ -51,7 +47,6 @@ const JourneyContainer = styled.div`
 `;
 
 JourneyScreen.propTypes = {
-  t: PropTypes.func
 };
 
 export default withTranslation()(JourneyScreen);

@@ -1,5 +1,10 @@
 {
   "translation": {
-    "title": "Bienvenue sur TrafiK"
+    "title": "Bienvenue sur TrafiK",
+    "journeys": {
+      "lineSelection": "Sélectionner une ligne",
+      "departureStationSelection": "Sélectionner votre station de départ",
+      "arrivalStationSelection": "Selectionner votre station d'arrivée"
+    }
   }
 }

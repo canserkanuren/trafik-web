@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import JourneyStationSelect from './journeyStationSelect';
 
 const JourneyStations = ({ stations }) => {
+  const { t } = useTranslation();
   // all stations
   const [allStations, setAllStations] = useState([]);
 
@@ -41,13 +43,13 @@ const JourneyStations = ({ stations }) => {
   return (
     <JourneyStationsContainer>
       <JourneyStationSelect
-        placeholder={'Sélectionner une gare de départ'}
+        placeholder={t('journeys.departureStationSelection')}
         value={departureStation}
         list={departureStations}
         updateValueFunction={setDepartureStation}
       />
       <JourneyStationSelect
-        placeholder={"Sélectionner une gare d'arrivée"}
+        placeholder={t('journeys.arrivalStationSelection')}
         value={arrivalStation}
         list={arrivalStations}
         updateValueFunction={setArrivalStation}
