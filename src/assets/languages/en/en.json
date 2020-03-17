@@ -4,7 +4,8 @@
     "journeys": {
       "lineSelection": "Choose a line",
       "departureStationSelection": "Choose your departure station",
-      "arrivalStationSelection": "Choose your arrival station"
+      "arrivalStationSelection": "Choose your arrival station",
+      "validateForm": "Validate"
     }
   }
 }

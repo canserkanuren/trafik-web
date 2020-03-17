@@ -36,6 +36,10 @@ const JourneyStations = ({ stations }) => {
     callback(s);
   };
 
+  const handleJourneyValidation = e => {
+    e.preventDefault();
+  };
+
   if (stations && stations.length === 0) {
     return <></>;
   }
@@ -54,6 +58,11 @@ const JourneyStations = ({ stations }) => {
         list={arrivalStations}
         updateValueFunction={setArrivalStation}
       />
+      <JourneyStationsButtons>
+        <JourneyStationsButton onClick={handleJourneyValidation}>
+          {t('journeys.validateForm')}
+        </JourneyStationsButton>
+      </JourneyStationsButtons>
     </JourneyStationsContainer>
   );
 };
@@ -70,3 +79,11 @@ const JourneyStationsContainer = styled.div`
   justify-content: space-around;
   min-height: 110px;
 `;
+
+const JourneyStationsButtons = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+`;
+
+const JourneyStationsButton = styled.button``;
