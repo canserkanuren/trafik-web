@@ -68,14 +68,3 @@ const JourneyStationsContainer = styled.div`
   justify-content: space-around;
   min-height: 110px;
 `;
-
-const JourneySelect = styled.select`
-  width: 100%;
-  height: 40px;
-  border-radius: 20px;
-  border: none;
-  font-size: 15px;
-  padding-left: 22px;
-`;
-
-const JourneySelectOption = styled.option``;
