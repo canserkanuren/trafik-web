@@ -1,11 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200">
-
-<rect x="0" y="0" width="200" height="200" rx="35" fill="#C7B300"/>
-<rect x="15" y="15" width="170" height="170" rx="20" fill="#ffffff"/>
-
-<path id="K" fill="#C7B300" d="M100,100 m -37.64 45.95 l 20.59 0 l 0 -30 l 7.91 -9.68 l 22.5 39.68 l 24.27 0 l -32.05 -52.77 l 30.41 -39.14 l -25.5 0 l -20.86 30.55 c -1.03 1.63 -2.07 3.28 -3.14 4.94 c -1.06 1.66 -2.11 3.38 -3.14 5.15 l -0.41 0 l 0 -40.64 l -20.59 0 l 0 91.91"/>
-
-</svg>
+<svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><style>.cls-1{fill:#c7b300;}</style></defs><title>k</title><path class="cls-1" d="M165,0H35A35,35,0,0,0,0,35V165a35,35,0,0,0,35,35H165a35,35,0,0,0,35-35V35A35,35,0,0,0,165,0Zm20,165a20,20,0,0,1-20,20H35a20,20,0,0,1-20-20V35A20,20,0,0,1,35,15H165a20,20,0,0,1,20,20Z"/><path id="K" class="cls-1" d="M62.36,146H83V116l7.91-9.68L113.36,146h24.27l-32-52.77L136,54h-25.5L89.63,84.59c-1,1.63-2.07,3.28-3.14,4.94s-2.11,3.38-3.14,5.15h-.41V54H62.35V146"/></svg>
