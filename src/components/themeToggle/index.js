@@ -2,7 +2,7 @@ import React from 'react';
 import actions from '../../redux/actions';
 import { useDispatch } from 'react-redux';
 
-const ThemeToggle = props => {
+const ThemeToggle = () => {
   const dispatch = useDispatch();
 
   const changeTheme = (e, bool) => {
