@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useTranslation, withTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import JourneyLines from '../components/journey/journeyLines';
@@ -46,7 +46,6 @@ const JourneyContainer = styled.div`
   border-radius: 5px;
 `;
 
-JourneyScreen.propTypes = {
-};
+JourneyScreen.propTypes = {};
 
-export default withTranslation()(JourneyScreen);
+export default JourneyScreen;
