@@ -1,7 +1,7 @@
 import Axios from 'axios';
 import { baseUrl } from '../config/constants';
 
-const getAllLines = async () => {
+const getAllLines = () => {
   return Axios.get(`${baseUrl}/lines`);
 };
 
