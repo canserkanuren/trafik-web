@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import JourneyStationSelect from './journeyStationSelect';
 
 const JourneyStations = ({ stations }) => {
+  // à faire avec redux pour avoir l'info autre part que dans ce composant
   const { t } = useTranslation();
   // all stations
   const [allStations, setAllStations] = useState([]);

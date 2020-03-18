@@ -15,6 +15,8 @@ export const GlobalStyle = createGlobalStyle`
   *::before {
     box-sizing: border-box;
     outline: none;
+    margin: 0;
+    padding: 0;
   }
 
   body {

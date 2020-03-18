@@ -1,6 +1,12 @@
 {
   "translation": {
-    "title": "Welcome to TrafiK",
+    "titles": {
+      "main": "Welcome to TrafiK",
+      "settings": "Settings"
+    },
+    "theme": {
+      "darkTheme": "Dark theme"
+    },
     "journeys": {
       "lineSelection": "Choose a line",
       "departureStationSelection": "Choose your departure station",

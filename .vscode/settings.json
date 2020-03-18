@@ -9,6 +9,7 @@
     // allow prettier to fix eslint 
     // "eslint.autoFixOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
+      "source.fixAll.eslint": true,
+      "source.organizeImports": true
     }
 }

@@ -1,14 +1,13 @@
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+import TabBar from '../components/common/tabBar';
 import JourneyLines from '../components/journey/journeyLines';
 import JourneyStations from '../components/journey/journeyStations';
-import ThemeToggle from '../components/themeToggle';
 import Actions from '../redux/actions';
 
-const JourneyScreen = () => {
-  const { t } = useTranslation();
+const JourneyScreen = ({ history }) => {
   const dispatch = useDispatch();
   const selectedLines = useSelector(state => state.stations.stations);
   const [stations, setStations] = useState([]);
@@ -20,8 +19,7 @@ const JourneyScreen = () => {
 
   return (
     <JourneyMainContainer>
-      <span>{t('title')}</span>
-      <ThemeToggle />
+      <TabBar history={history} />
       <JourneyContainer>
         <JourneyLines onUpdateLine={onUpdateLine} />
         <JourneyStations stations={stations} />
@@ -46,6 +44,8 @@ const JourneyContainer = styled.div`
   border-radius: 5px;
 `;
 
-JourneyScreen.propTypes = {};
+JourneyScreen.propTypes = {
+  history: PropTypes.object.isRequired
+};
 
 export default JourneyScreen;
