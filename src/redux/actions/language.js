@@ -1,4 +1,4 @@
-export const SET_LANGUAGE = 'GET_STATIONS_PER_LINE';
+export const SET_LANGUAGE = 'SET_LANGUAGE';
 
 export const setLanguage = payload => async dispatch => {
   dispatch({
