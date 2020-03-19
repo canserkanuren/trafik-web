@@ -1,11 +1,12 @@
 import { combineReducers } from 'redux';
-
-import theme from './theme';
+import language from './language';
 import lines from './lines';
 import stations from './stations';
+import theme from './theme';
 
 export default combineReducers({
   theme,
   lines,
-  stations
+  stations,
+  language
 });

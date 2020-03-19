@@ -18,7 +18,7 @@ const persistConfig = {
   // Storage Method (React Native)
   storage,
   // Whitelist (Save Specific Reducers)
-  whitelist: ['theme', 'lines', 'stations'],
+  // whitelist: ['theme', 'lines', 'stations', 'language'],
   // Blacklist (Don't Save Specific Reducers)
   // blacklist: [],
   // There is an issue in the source code of redux-persist (default setTimeout does not cleaning)
