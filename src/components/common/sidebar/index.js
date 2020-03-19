@@ -1,14 +1,14 @@
-import React from 'react';
-import { useRef } from 'react';
 import { motion, useCycle } from 'framer-motion';
-import { useDimensions } from './use-dimensions';
+import React, { useRef } from 'react';
+import styled from 'styled-components';
 import MenuToggle from './MenuToggle';
 import Navigation from './Navigation';
-import styled from 'styled-components';
+import { useDimensions } from './use-dimensions';
 
 const sidebar = {
   open: (height = 1000) => ({
     clipPath: `circle(${height * 2 + 200}px at 40px 40px)`,
+    x: 0,
     transition: {
       type: 'spring',
       stiffness: 20,
@@ -17,6 +17,7 @@ const sidebar = {
   }),
   closed: {
     clipPath: 'circle(30px at 40px 40px)',
+    x: -300,
     transition: {
       delay: 0.5,
       type: 'spring',
