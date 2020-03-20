@@ -4,7 +4,7 @@ import en from '../assets/languages/en/en.json';
 import fr from '../assets/languages/fr/fr.json';
 import { store } from '../redux';
 const language = store.getState().language.language;
-console.log(`language: ${language}`);
+
 const resources = {
   fr,
   en

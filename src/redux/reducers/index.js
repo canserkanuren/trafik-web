@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import journey from './journey';
 import language from './language';
 import lines from './lines';
 import stations from './stations';
@@ -8,5 +9,6 @@ export default combineReducers({
   theme,
   lines,
   stations,
-  language
+  language,
+  journey
 });

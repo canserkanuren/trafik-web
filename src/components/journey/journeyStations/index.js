@@ -1,12 +1,17 @@
+import moment from 'moment';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
+import { Button, DatePicker } from 'rsuite';
 import styled from 'styled-components';
+import Actions from '../../../redux/actions';
 import JourneyStationSelect from './journeyStationSelect';
 
 const JourneyStations = ({ stations }) => {
   // à faire avec redux pour avoir l'info autre part que dans ce composant
   const { t } = useTranslation();
+  const dispatch = useDispatch();
   // all stations
   const [allStations, setAllStations] = useState([]);
 
@@ -18,10 +23,14 @@ const JourneyStations = ({ stations }) => {
   const [arrivalStation, setArrivalStation] = useState('');
   const [arrivalStations, setArrivalStations] = useState([]);
 
+  // departure time
+  const [departureTime, setDepartureTime] = useState('');
+
   useEffect(() => {
-    setAllStations(stations);
-    setDepartureStations(stations);
-    setArrivalStations(stations);
+    const s = stations.map(st => ({ label: st.name, value: st.codeUic }));
+    setAllStations(s);
+    setDepartureStations(s);
+    setArrivalStations(s);
   }, [stations]);
 
   useEffect(() => {
@@ -33,12 +42,22 @@ const JourneyStations = ({ stations }) => {
   }, [arrivalStation]);
 
   const callbackUpdateStation = (idStation, callback) => {
-    const s = [...allStations.filter(st => st.codeUic !== idStation)];
+    const s = [...allStations.filter(st => st.value !== idStation)];
     callback(s);
   };
 
-  const handleJourneyValidation = e => {
+  const handleJourneyValidation = async e => {
     e.preventDefault();
+    console.log(departureTime);
+    const d = moment(departureTime).format('YYYYMMDDThhmmss');
+    console.log(d);
+    dispatch(
+      Actions.journey.getJourney({
+        fromStation: departureStation,
+        toStation: arrivalStation,
+        departureTime: d
+      })
+    );
   };
 
   if (stations && stations.length === 0) {
@@ -48,21 +67,37 @@ const JourneyStations = ({ stations }) => {
   return (
     <JourneyStationsContainer>
       <JourneyStationSelect
-        placeholder={t('journeys.departureStationSelection')}
-        value={departureStation}
         list={departureStations}
-        updateValueFunction={setDepartureStation}
+        placeholder={t('journeys.arrivalStationSelection')}
+        onSelect={setDepartureStation}
+        value={departureStation}
+        block
       />
       <JourneyStationSelect
-        placeholder={t('journeys.arrivalStationSelection')}
-        value={arrivalStation}
         list={arrivalStations}
-        updateValueFunction={setArrivalStation}
+        placeholder={t('journeys.departureStationSelection')}
+        onSelect={setArrivalStation}
+        value={arrivalStation}
+        block
+      />
+      <DatePicker
+        format='YYYY-MM-DD'
+        placeholder={'Sélectionner une date de départ'}
+        hideSeconds={() => true}
+        onSelect={date => setDepartureTime(date)}
+        oneTap={true}
+        ranges={[
+          {
+            label: 'Now',
+            value: new Date(),
+            closeOverlay: true
+          }
+        ]}
       />
       <JourneyStationsButtons>
-        <JourneyStationsButton onClick={handleJourneyValidation}>
+        <Button onClick={handleJourneyValidation}>
           {t('journeys.validateForm')}
-        </JourneyStationsButton>
+        </Button>
       </JourneyStationsButtons>
     </JourneyStationsContainer>
   );
@@ -79,6 +114,9 @@ const JourneyStationsContainer = styled.div`
   flex-direction: column;
   justify-content: space-around;
   min-height: 110px;
+  & > * {
+    padding: 5px 0;
+  }
 `;
 
 const JourneyStationsButtons = styled.div`
@@ -86,5 +124,3 @@ const JourneyStationsButtons = styled.div`
   width: 100%;
   justify-content: flex-end;
 `;
-
-const JourneyStationsButton = styled.button``;

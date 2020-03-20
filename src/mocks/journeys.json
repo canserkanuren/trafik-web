@@ -1,0 +1,39 @@
+[
+  {
+    "from": "Montereau (Montereau-Fault-Yonne)",
+    "commmercialMode": "TER",
+    "to": "Paris-Gare-de-Lyon (Paris)",
+    "duration": 3060,
+    "departureTime": "20200504T065700",
+    "arrivalTime": "20200504T074800",
+    "stopsAreas": [
+      {
+        "name": "Montereau",
+        "coordinates": {
+          "lat": "48.379832",
+          "lon": "2.94291"
+        },
+        "arrivalTime": "20200504T065400",
+        "departureTime": "20200504T065700"
+      },
+      {
+        "name": "Champagne-sur-Seine",
+        "coordinates": {
+          "lat": "48.406582",
+          "lon": "2.799221"
+        },
+        "arrivalTime": "20200504T070700",
+        "departureTime": "20200504T070800"
+      },
+      {
+        "name": "Paris-Gare-de-Lyon",
+        "coordinates": {
+          "lat": "48.844922",
+          "lon": "2.373462"
+        },
+        "arrivalTime": "20200504T074800",
+        "departureTime": "20200504T074800"
+      }
+    ]
+  }
+]

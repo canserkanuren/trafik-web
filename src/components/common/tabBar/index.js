@@ -1,11 +1,12 @@
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import styled, { ThemeContext } from 'styled-components';
 import trafikLogo from '../../../assets/logos/trafik/logo-without-background.svg';
 
-const TabBar = ({ history }) => {
+const TabBar = () => {
+  const history = useHistory();
   const themeContext = useContext(ThemeContext);
 
   return (
@@ -20,9 +21,7 @@ const TabBar = ({ history }) => {
   );
 };
 
-TabBar.propTypes = {
-  history: PropTypes.object.isRequired
-};
+TabBar.propTypes = {};
 
 export default TabBar;
 

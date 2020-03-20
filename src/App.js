@@ -5,12 +5,13 @@ import { ThemeProvider } from 'styled-components';
 import Routes from './config/routes';
 import { GlobalStyle } from './config/styles';
 import { darkTheme, lightTheme } from './config/themes';
+
 const App = () => {
   const isDarkTheme = useSelector(state => state.theme.isDark);
 
   return (
     <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
-      <GlobalStyle />
+      <GlobalStyle isDark={isDarkTheme} />
       <Routes />
     </ThemeProvider>
   );

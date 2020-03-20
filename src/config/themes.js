@@ -8,7 +8,8 @@ const lightTheme = {
   dark: '#222428',
   medium: '#989aa2',
   light: '#f4f5f8',
-  color: 'black'
+  color: 'black',
+  rsuite: '~rsuite/dist/styles/rsuite-default.css'
 };
 
 const darkTheme = {
@@ -21,7 +22,8 @@ const darkTheme = {
   dark: '#222428',
   medium: '#78849E',
   light: '#f4f5f8',
-  color: 'white'
+  color: 'white',
+  rsuite: '~rsuite/dist/styles/rsuite-dark.css'
 };
 
 export { lightTheme, darkTheme };
