@@ -37,3 +37,4 @@ const store = compose(applyMiddleware(...middlewares))(createStore)(
 const persistor = persistStore(store);
 
 export { store, persistor };
+

@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
-import { store, persistor } from './redux';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
+import 'rsuite/dist/styles/rsuite-default.css';
+import App from './App';
 import './config/translations';
+import { persistor, store } from './redux';
+import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <Provider store={store}>
