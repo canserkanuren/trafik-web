@@ -1,6 +1,7 @@
 import { getAllLines } from '../../services/LineService';
 
 export const INIT_LINES = 'INIT_LINES';
+export const SELECTED_LINE = 'SELECTED_LINE';
 
 export const initLines = () => async (dispatch, getState) => {
   const linesInLocalStorage = getState().lines.lines;
@@ -16,4 +17,11 @@ export const initLines = () => async (dispatch, getState) => {
       payload: linesInLocalStorage
     });
   }
+};
+
+export const selectedLine = payload => async dispatch => {
+  dispatch({
+    type: SELECTED_LINE,
+    payload
+  });
 };

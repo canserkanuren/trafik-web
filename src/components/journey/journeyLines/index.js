@@ -15,16 +15,21 @@ const JourneyLines = ({ onUpdateLine }) => {
     dispatch(Actions.lines.initLines());
   }, []);
 
+  const selectLine = line => {
+    onUpdateLine(line._id);
+    dispatch(Actions.lines.selectedLine(line));
+  };
+
   if (lines && lines.length === 0) {
     return <div>Loading..</div>;
   }
 
   return (
     <JourneyLinesContainer>
-      <span>{t('journeys.lineSelection')}</span>
+      <h4>{t('journeys.lineSelection')}</h4>
       <JourneyLinesImageContainer>
         {lines.map(l => (
-          <LineLogo key={l._id} id={l._id} line={l.name} click={onUpdateLine} />
+          <LineLogo key={l._id} line={l} click={selectLine} />
         ))}
       </JourneyLinesImageContainer>
     </JourneyLinesContainer>
@@ -36,7 +41,7 @@ const JourneyLinesContainer = styled.section`
   flex-direction: column;
   justify-content: space-between;
   & > * {
-    margin: 5px;
+    margin: 5px 0;
   }
 `;
 const JourneyLinesImageContainer = styled.section`

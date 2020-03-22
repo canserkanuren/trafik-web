@@ -9,7 +9,7 @@ export default (state = initialState, action) => {
     case GET_JOURNEY:
       return {
         ...state,
-        journey: action.payload
+        journeys: action.payload
       };
     default:
       return state;

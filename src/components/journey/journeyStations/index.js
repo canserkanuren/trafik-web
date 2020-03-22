@@ -1,14 +1,15 @@
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { Button, DatePicker } from 'rsuite';
-import styled from 'styled-components';
+import styled, { ThemeContext } from 'styled-components';
 import Actions from '../../../redux/actions';
 import JourneyStationSelect from './journeyStationSelect';
 
 const JourneyStations = ({ stations }) => {
+  const themeContext = useContext(ThemeContext);
   // à faire avec redux pour avoir l'info autre part que dans ce composant
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -51,7 +52,7 @@ const JourneyStations = ({ stations }) => {
     console.log(departureTime);
     const d = moment(departureTime).format('YYYYMMDDThhmmss');
     console.log(d);
-    dispatch(
+    await dispatch(
       Actions.journey.getJourney({
         fromStation: departureStation,
         toStation: arrivalStation,
@@ -60,29 +61,25 @@ const JourneyStations = ({ stations }) => {
     );
   };
 
-  if (stations && stations.length === 0) {
-    return <></>;
-  }
-
   return (
     <JourneyStationsContainer>
       <JourneyStationSelect
         list={departureStations}
-        placeholder={t('journeys.arrivalStationSelection')}
+        placeholder={t('journeys.departureStationSelection')}
         onSelect={setDepartureStation}
         value={departureStation}
         block
       />
       <JourneyStationSelect
         list={arrivalStations}
-        placeholder={t('journeys.departureStationSelection')}
+        placeholder={t('journeys.arrivalStationSelection')}
         onSelect={setArrivalStation}
         value={arrivalStation}
         block
       />
       <DatePicker
         format='YYYY-MM-DD'
-        placeholder={'Sélectionner une date de départ'}
+        placeholder={'Date de départ'}
         hideSeconds={() => true}
         onSelect={date => setDepartureTime(date)}
         oneTap={true}
@@ -95,7 +92,10 @@ const JourneyStations = ({ stations }) => {
         ]}
       />
       <JourneyStationsButtons>
-        <Button onClick={handleJourneyValidation}>
+        <Button
+          style={{ backgroundColor: themeContext.tertiary }}
+          onClick={handleJourneyValidation}
+        >
           {t('journeys.validateForm')}
         </Button>
       </JourneyStationsButtons>
@@ -111,11 +111,13 @@ export default JourneyStations;
 
 const JourneyStationsContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-around;
-  min-height: 110px;
   & > * {
     padding: 5px 0;
+  }
+  & > *:not(:last-child) {
+    padding-right: 5px;
   }
 `;
 

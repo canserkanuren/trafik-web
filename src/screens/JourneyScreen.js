@@ -2,10 +2,11 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+import TrainStation from '../assets/images/train-station.jpg';
 import TabBar from '../components/common/tabBar';
 import JourneyLines from '../components/journey/journeyLines';
+import JourneyResults from '../components/journey/journeyResults';
 import JourneyStations from '../components/journey/journeyStations';
-import JourneyTimeLine from '../components/journey/journeyTimeLine';
 import Actions from '../redux/actions';
 
 const JourneyScreen = () => {
@@ -21,11 +22,13 @@ const JourneyScreen = () => {
   return (
     <JourneyMainContainer>
       <TabBar />
-      <JourneyContainer>
-        <JourneyLines onUpdateLine={onUpdateLine} />
-        <JourneyStations stations={stations} />
-      </JourneyContainer>
-      <JourneyTimeLine />
+      <JourneyGlobal>
+        <JourneyContainer>
+          <JourneyLines onUpdateLine={onUpdateLine} />
+          <JourneyStations stations={stations} />
+        </JourneyContainer>
+      </JourneyGlobal>
+      <JourneyResults></JourneyResults>
     </JourneyMainContainer>
   );
 };
@@ -34,6 +37,19 @@ const JourneyMainContainer = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
+`;
+
+const JourneyGlobal = styled.div`
+  height: 500px;
+  padding: 1em;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(${TrainStation});
 `;
 
 const JourneyContainer = styled.div`

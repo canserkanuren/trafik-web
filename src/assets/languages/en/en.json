@@ -9,9 +9,9 @@
     },
     "journeys": {
       "lineSelection": "Choose a line",
-      "departureStationSelection": "Choose your departure station",
-      "arrivalStationSelection": "Choose your arrival station",
-      "validateForm": "Validate"
+      "departureStationSelection": "Departure station",
+      "arrivalStationSelection": "Arrival station",
+      "validateForm": "Search"
     }
   }
 }

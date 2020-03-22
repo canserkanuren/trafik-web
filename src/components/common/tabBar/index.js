@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled, { ThemeContext } from 'styled-components';
-import trafikLogo from '../../../assets/logos/trafik/logo-without-background.svg';
+import trafikLogo from '../../../assets/logos/trafik/default-monochrome.svg';
 
 const TabBar = () => {
   const history = useHistory();
@@ -13,6 +13,7 @@ const TabBar = () => {
     <TabBarContainer>
       <TabBarImage src={trafikLogo}></TabBarImage>
       <FontAwesomeIcon
+        size='lg'
         icon={faCog}
         color={themeContext.tertiary}
         onClick={() => history.push('settings')}
@@ -30,10 +31,10 @@ const TabBarContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10px;
+  margin: 1em;
+  height: 50px;
 `;
 
 const TabBarImage = styled.img`
-  height: 35px;
-  width: 35px;
+  height: 100%;
 `;

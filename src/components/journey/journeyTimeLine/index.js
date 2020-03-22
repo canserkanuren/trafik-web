@@ -4,45 +4,53 @@ import { useSelector } from 'react-redux';
 import { Timeline } from 'rsuite';
 import styled from 'styled-components';
 
-const JourneyTimeLine = () => {
-  const journeys = useSelector(state => state.journey.journeys);
-  console.log(journeys);
-  if (journeys.length === 0) {
+const JourneyTimeLine = ({ stops }) => {
+  const selectedLine = useSelector(state => state.lines.selectedLine);
+
+  if (stops.length === 0) {
     return <></>;
   }
 
   return (
-    <JourneyTimeLineContainer align={'left'}>
-      <JourneyTimeLineItem>
-        <p>2018-03-01</p>
-        <p>Your order starts processing</p>
-      </JourneyTimeLineItem>
-      <JourneyTimeLineItem>
-        <p>2018-03-02</p>
-        <p>Order out of stock</p>
-      </JourneyTimeLineItem>
-      <JourneyTimeLineItem>
-        <p>2018-03-10</p>
-        <p>Arrival</p>
-      </JourneyTimeLineItem>
-      <JourneyTimeLineItem>
-        <p>2018-03-12</p>
-        <p>Order out of the library</p>
-      </JourneyTimeLineItem>
-      <JourneyTimeLineItem>
-        <p>2018-03-15</p>
-        <p>Sending you a piece</p>
-      </JourneyTimeLineItem>
-    </JourneyTimeLineContainer>
+    <>
+      {stops.map(stop => (
+        <>
+          <JourneyTimeLineContainer align={'left'}>
+            {stop.mode === 'waiting' ? (
+              <>
+                <p></p>
+              </>
+            ) : (
+                <>
+                  {stop.stops.map(s => (
+                    <>
+                      <JourneyTimeLineItem
+                        selectedLine={selectedLine}
+                        key={stop.name}
+                      >
+                        <p>{s.name}</p>
+                      </JourneyTimeLineItem>
+                    </>
+                  ))}
+                </>
+              )}
+          </JourneyTimeLineContainer>
+        </>
+      ))}
+    </>
   );
 };
 
 const JourneyTimeLineContainer = styled(Timeline)``;
 
-const JourneyTimeLineItem = styled(Timeline.Item)``;
+const JourneyTimeLineItem = styled(Timeline.Item)`
+  .rs-timeline-item-dot::before {
+    background-color: ${({ selectedLine }) => selectedLine.color};
+  }
+`;
 
 JourneyTimeLine.propTypes = {
-  journey: PropTypes.object
+  stops: PropTypes.array
 };
 
 export default JourneyTimeLine;

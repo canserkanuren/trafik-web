@@ -9,9 +9,9 @@
     },
     "journeys": {
       "lineSelection": "Sélectionner une ligne",
-      "departureStationSelection": "Sélectionner votre station de départ",
-      "arrivalStationSelection": "Selectionner votre station d'arrivée",
-      "validateForm": "Valider"
+      "departureStationSelection": "Gare de départ",
+      "arrivalStationSelection": "Gare d'arrivée",
+      "validateForm": "Rechercher"
     }
   }
 }
