@@ -11,6 +11,7 @@ const JourneyStationSelect = ({ placeholder, value, list, onSelect }) => {
         placeholder={placeholder}
         onSelect={onSelect}
         value={value}
+        onClean={() => onSelect('')}
         block
       />
     </JourneyStationSelectContainer>
