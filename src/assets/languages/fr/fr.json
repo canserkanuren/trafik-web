@@ -7,6 +7,7 @@
     "theme": {
       "darkTheme": "Mode sombre"
     },
+    "language": "Langue",
     "journeys": {
       "lineSelection": "Sélectionner une ligne",
       "departureStationSelection": "Gare de départ",

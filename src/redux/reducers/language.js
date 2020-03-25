@@ -1,7 +1,11 @@
 import { SET_LANGUAGE } from '../actions/language';
 
 const initialState = {
-  language: 'fr'
+  language: '',
+  defaultLanguages: [
+    { label: 'Français', value: 'fr' },
+    { label: 'English', value: 'en' }
+  ]
 };
 
 export default (state = initialState, action) => {
