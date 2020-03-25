@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { Button, DatePicker } from 'rsuite';
 import styled, { ThemeContext } from 'styled-components';
+import { device } from '../../../config/styles';
 import Actions from '../../../redux/actions';
 import JourneyStationSelect from './journeyStationSelect';
 
@@ -49,9 +50,9 @@ const JourneyStations = ({ stations }) => {
 
   const handleJourneyValidation = async e => {
     e.preventDefault();
-    console.log(departureTime);
+
     const d = moment(departureTime).format('YYYYMMDDThhmmss');
-    console.log(d);
+
     await dispatch(
       Actions.journey.getJourney({
         fromStation: departureStation,
@@ -79,13 +80,13 @@ const JourneyStations = ({ stations }) => {
       />
       <DatePicker
         format='YYYY-MM-DD'
-        placeholder={'Date de départ'}
+        placeholder={t('journeys.departureTime')}
         hideSeconds={() => true}
         onSelect={date => setDepartureTime(date)}
         oneTap={true}
         ranges={[
           {
-            label: 'Now',
+            label: t('journeys.now'),
             value: new Date(),
             closeOverlay: true
           }
@@ -112,11 +113,19 @@ export default JourneyStations;
 const JourneyStationsContainer = styled.div`
   display: flex;
   flex-direction: row;
+
+  @media ${device.tablet} {
+    flex-direction: column;
+  }
+
   justify-content: space-around;
   & > * {
     padding: 5px 0;
   }
   & > *:not(:last-child) {
+    @media ${device.tablet}, ${device.mobileL} {
+      padding-right: 0px;
+    }
     padding-right: 5px;
   }
 `;

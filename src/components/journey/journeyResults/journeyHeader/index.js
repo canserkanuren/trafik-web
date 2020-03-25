@@ -10,8 +10,11 @@ import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { useSelector } from 'react-redux';
 import styled, { ThemeContext } from 'styled-components';
+import { device } from '../../../../config/styles';
+import { useTranslation } from 'react-i18next';
 
 const JourneyHeader = ({ journey }) => {
+  const { t } = useTranslation();
   const themeContext = useContext(ThemeContext);
   const selectedLine = useSelector(state => state.lines.selectedLine);
   return (
@@ -32,7 +35,10 @@ const JourneyHeader = ({ journey }) => {
           icon={faTrain}
           color={themeContext.tertiary}
         />
-        <h4>Ligne {selectedLine.name.toUpperCase()}</h4>
+        <h4>
+          {t('journeys.line')}
+          {selectedLine.name.toUpperCase()}
+        </h4>
       </JourneyDepartArrival>
       <JourneyDepartArrival>
         <FontAwesomeIcon
@@ -40,7 +46,7 @@ const JourneyHeader = ({ journey }) => {
           icon={faClock}
           color={themeContext.tertiary}
         />
-        <JourneyDuration>{journey.duration / 60} min</JourneyDuration>
+        <JourneyDuration>{journey.duration / 60} mn</JourneyDuration>
       </JourneyDepartArrival>
     </JourneyDetailResults>
   );
@@ -57,6 +63,11 @@ const JourneyDuration = styled.h4``;
 const JourneyDetailResults = styled.div`
   display: flex;
   flex-direction: row;
+
+  @media ${device.tablet} {
+    flex-direction: column;
+  }
+
   justify-content: space-around;
   align-items: center;
 `;

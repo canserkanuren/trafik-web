@@ -1,12 +1,14 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import { Panel, Progress } from 'rsuite';
 import styled from 'styled-components';
-import JourneyTimeLine from '../journeyTimeLine';
-import { Progress, Panel } from 'rsuite';
 import { v4 as uuid } from 'uuid';
+import JourneyTimeLine from '../journeyTimeLine';
 import JourneyHeader from './journeyHeader';
 
 const JourneyResults = () => {
+  const { t } = useTranslation();
   const { Circle } = Progress;
   const journeys = useSelector(state => state.journey.journeys);
 
@@ -16,7 +18,7 @@ const JourneyResults = () => {
 
   return (
     <JourneyResultsContainer>
-      <JourneyTitleResults>Liste des itinéraires</JourneyTitleResults>
+      <JourneyTitleResults>{t('journeys.list')}</JourneyTitleResults>
       {journeys.map(journey => (
         <JourneyGlobalResult
           header={<JourneyHeader journey={journey} />}
@@ -33,9 +35,9 @@ const JourneyResults = () => {
               ></JourneyTimeLine>
             </JourneyResultsTimeLineItem>
 
-            <JourneyResultsTimeLineItem>
+            {/* <JourneyResultsTimeLineItem>
               <Circle percent={30} strokeColor='#ffc107' />
-            </JourneyResultsTimeLineItem>
+            </JourneyResultsTimeLineItem> */}
           </JourneyResultsTimeLineContainer>
         </JourneyGlobalResult>
       ))}
@@ -55,7 +57,6 @@ const JourneyResultsContainer = styled.div`
 
 const JourneyGlobalResult = styled(Panel)`
   background-color: ${({ theme }) => theme.secondary};
-  padding: 1em;
   border-radius: 5px;
   &:not(:last-child) {
     margin-bottom: 1em;

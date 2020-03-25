@@ -21,19 +21,19 @@ const JourneyTimeLine = ({ stops }) => {
                 <p></p>
               </>
             ) : (
-                <>
-                  {stop.stops.map(s => (
-                    <>
-                      <JourneyTimeLineItem
-                        selectedLine={selectedLine}
-                        key={stop.name}
-                      >
-                        <p>{s.name}</p>
-                      </JourneyTimeLineItem>
-                    </>
-                  ))}
-                </>
-              )}
+              <>
+                {stop.stops.map(s => (
+                  <>
+                    <JourneyTimeLineItem
+                      selectedLine={selectedLine}
+                      key={stop.name}
+                    >
+                      <p>{s.name}</p>
+                    </JourneyTimeLineItem>
+                  </>
+                ))}
+              </>
+            )}
           </JourneyTimeLineContainer>
         </>
       ))}

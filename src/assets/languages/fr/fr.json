@@ -10,8 +10,12 @@
     "journeys": {
       "lineSelection": "Sélectionner une ligne",
       "departureStationSelection": "Gare de départ",
+      "departureTime": "Date de départ",
       "arrivalStationSelection": "Gare d'arrivée",
-      "validateForm": "Rechercher"
+      "validateForm": "Rechercher",
+      "list": "Liste des itinéraires",
+      "line": "Ligne",
+      "now": "Maintenant"
     }
   }
 }

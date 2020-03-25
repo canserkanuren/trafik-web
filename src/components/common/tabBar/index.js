@@ -4,6 +4,7 @@ import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled, { ThemeContext } from 'styled-components';
 import trafikLogo from '../../../assets/logos/trafik/default-monochrome.svg';
+import { device } from '../../../config/styles';
 
 const TabBar = () => {
   const history = useHistory();
@@ -33,6 +34,9 @@ const TabBarContainer = styled.div`
   align-items: center;
   margin: 1em;
   height: 50px;
+  @media ${device.tablet}, ${device.mobileL} {
+    height: 40px;
+  }
 `;
 
 const TabBarImage = styled.img`

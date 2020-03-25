@@ -10,8 +10,12 @@
     "journeys": {
       "lineSelection": "Choose a line",
       "departureStationSelection": "Departure station",
+      "departureTime": "Departure time",
       "arrivalStationSelection": "Arrival station",
-      "validateForm": "Search"
+      "validateForm": "Search",
+      "list": "List of your journeys",
+      "line": "Line",
+      "now": "Now"
     }
   }
 }
