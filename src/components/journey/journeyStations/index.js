@@ -7,7 +7,7 @@ import { Button, DatePicker } from 'rsuite';
 import styled, { ThemeContext } from 'styled-components';
 import { device } from '../../../config/styles';
 import Actions from '../../../redux/actions';
-import JourneyStationSelect from './journeyStationSelect';
+import Select from '../../common/select';
 
 const JourneyStations = ({ stations }) => {
   const themeContext = useContext(ThemeContext);
@@ -64,19 +64,17 @@ const JourneyStations = ({ stations }) => {
 
   return (
     <JourneyStationsContainer>
-      <JourneyStationSelect
+      <Select
         list={departureStations}
         placeholder={t('journeys.departureStationSelection')}
         onSelect={setDepartureStation}
         value={departureStation}
-        block
       />
-      <JourneyStationSelect
+      <Select
         list={arrivalStations}
         placeholder={t('journeys.arrivalStationSelection')}
         onSelect={setArrivalStation}
         value={arrivalStation}
-        block
       />
       <DatePicker
         format='YYYY-MM-DD'

@@ -1,11 +1,11 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
 import { SelectPicker } from 'rsuite';
 import styled from 'styled-components';
 
-const JourneyStationSelect = ({ placeholder, value, list, onSelect }) => {
+const Select = ({ placeholder, value, list, onSelect }) => {
   return (
-    <JourneyStationSelectContainer>
+    <SelectContainer>
       <SelectPicker
         data={list}
         placeholder={placeholder}
@@ -14,17 +14,17 @@ const JourneyStationSelect = ({ placeholder, value, list, onSelect }) => {
         onClean={() => onSelect('')}
         block
       />
-    </JourneyStationSelectContainer>
+    </SelectContainer>
   );
 };
 
-JourneyStationSelect.propTypes = {
+Select.propTypes = {
   placeholder: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   list: PropTypes.array.isRequired,
   onSelect: PropTypes.func.isRequired
 };
 
-export default JourneyStationSelect;
+export default Select;
 
-const JourneyStationSelectContainer = styled.div``;
+const SelectContainer = styled.div``;
