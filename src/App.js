@@ -8,6 +8,17 @@ import { darkTheme, lightTheme } from './config/themes';
 import { useTranslation } from 'react-i18next';
 
 const App = () => {
+  useEffect(() => {
+    messaging
+      .requestPermission()
+      .then(async function () {
+        const token = await messaging.getToken();
+      })
+      .catch(function (err) {
+      });
+    navigator.serviceWorker.addEventListener('message', message =>
+    );
+  }, []);
   const isDarkTheme = useSelector(state => state.theme.isDark);
   const language = useSelector(state => state.language.language);
   const { i18n } = useTranslation();
