@@ -30,7 +30,8 @@ const JourneyStations = ({ stations }) => {
   const [departureTime, setDepartureTime] = useState('');
 
   useEffect(() => {
-    const s = stations.map(st => ({ label: st.name, value: st.codeUic }));
+    const s =
+      stations && stations.map(st => ({ label: st.name, value: st.codeUic }));
     setAllStations(s);
     setDepartureStations(s);
     setArrivalStations(s);
@@ -45,6 +46,10 @@ const JourneyStations = ({ stations }) => {
   }, [arrivalStation]);
 
   const isSelectedLineDisabled = () => !selectedLine;
+
+  const areStationsEmpty = () => !stations;
+
+  const disableButton = () => isSelectedLineDisabled() || areStationsEmpty();
 
   const callbackUpdateStation = (idStation, callback) => {
     const s = [...allStations.filter(st => st.value !== idStation)];
@@ -100,7 +105,7 @@ const JourneyStations = ({ stations }) => {
         <Button
           style={{ backgroundColor: themeContext.tertiary }}
           onClick={handleJourneyValidation}
-          disabled={isSelectedLineDisabled()}
+          disabled={disableButton()}
         >
           {t('journeys.validateForm')}
         </Button>
@@ -110,7 +115,7 @@ const JourneyStations = ({ stations }) => {
 };
 
 JourneyStations.propTypes = {
-  stations: PropTypes.array.isRequired
+  stations: PropTypes.array
 };
 
 export default JourneyStations;

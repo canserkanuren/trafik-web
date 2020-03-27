@@ -22,7 +22,7 @@ const Select = ({ placeholder, value, list, onSelect, disabled = false }) => {
 Select.propTypes = {
   placeholder: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
-  list: PropTypes.array.isRequired,
+  list: PropTypes.array,
   onSelect: PropTypes.func.isRequired,
   disabled: PropTypes.bool
 };

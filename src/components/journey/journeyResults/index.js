@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
-import { Panel, Progress } from 'rsuite';
+import { Panel } from 'rsuite';
 import styled from 'styled-components';
 import { v4 as uuid } from 'uuid';
 import JourneyTimeLine from '../journeyTimeLine';
@@ -9,8 +9,11 @@ import JourneyHeader from './journeyHeader';
 
 const JourneyResults = () => {
   const { t } = useTranslation();
-  const { Circle } = Progress;
   const journeys = useSelector(state => state.journey.journeys);
+
+  if (Object.keys(journeys) === 0) {
+    return <></>;
+  }
 
   if (journeys.length === 0) {
     return <></>;
@@ -31,10 +34,6 @@ const JourneyResults = () => {
             <JourneyResultsTimeLineItem>
               <JourneyTimeLine stops={journey.stopsAreas} key={uuid()} />
             </JourneyResultsTimeLineItem>
-
-            {/* <JourneyResultsTimeLineItem>
-              <Circle percent={30} strokeColor='#ffc107' />
-            </JourneyResultsTimeLineItem> */}
           </JourneyResultsTimeLineContainer>
         </JourneyGlobalResult>
       ))}
