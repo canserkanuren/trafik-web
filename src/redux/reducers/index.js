@@ -5,6 +5,7 @@ import lines from './lines';
 import stations from './stations';
 import theme from './theme';
 import selectedLine from './selectedLine';
+import notifications from './notifications';
 
 export default combineReducers({
   theme,
@@ -12,5 +13,6 @@ export default combineReducers({
   stations,
   language,
   journey,
-  selectedLine
+  selectedLine,
+  notifications
 });

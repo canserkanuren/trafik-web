@@ -20,7 +20,7 @@ const persistConfig = {
   // Whitelist (Save Specific Reducers)
   // whitelist: ['theme', 'lines', 'stations', 'language'],
   // Blacklist (Don't Save Specific Reducers)
-  blacklist: ['journey', 'selectedLine'],
+  blacklist: ['journey', 'selectedLine', 'notifications'],
   // There is an issue in the source code of redux-persist (default setTimeout does not cleaning)
   timeout: null
 };

@@ -5,14 +5,25 @@ import styled, { ThemeContext } from 'styled-components';
 import trafikLogo from '../../../assets/logos/trafik/default-monochrome.svg';
 import { device } from '../../../config/styles';
 import Icon from '../icon';
+import { Button } from 'rsuite';
+import { useDispatch } from 'react-redux';
+import Actions from '../../../redux/actions';
 
 const TabBar = () => {
   const history = useHistory();
   const themeContext = useContext(ThemeContext);
+  const dispatch = useDispatch();
+
+  const postNotif = async () => {
+    await dispatch(Actions.notifications.pushNotification());
+  };
 
   return (
     <TabBarContainer>
       <TabBarImage src={trafikLogo}></TabBarImage>
+      <Button onClick={postNotif} appearance='ghost'>
+        Notification
+      </Button>
       <Icon
         size='lg'
         icon={faCog}
