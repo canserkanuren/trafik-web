@@ -29,10 +29,7 @@ const JourneyResults = () => {
         >
           <JourneyResultsTimeLineContainer>
             <JourneyResultsTimeLineItem>
-              <JourneyTimeLine
-                key={uuid()}
-                stops={journey.stopsAreas}
-              ></JourneyTimeLine>
+              <JourneyTimeLine stops={journey.stopsAreas} key={uuid()} />
             </JourneyResultsTimeLineItem>
 
             {/* <JourneyResultsTimeLineItem>

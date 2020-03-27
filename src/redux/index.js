@@ -20,7 +20,7 @@ const persistConfig = {
   // Whitelist (Save Specific Reducers)
   // whitelist: ['theme', 'lines', 'stations', 'language'],
   // Blacklist (Don't Save Specific Reducers)
-  blacklist: ['journey'],
+  blacklist: ['journey', 'selectedLine'],
   // There is an issue in the source code of redux-persist (default setTimeout does not cleaning)
   timeout: null
 };
@@ -37,4 +37,3 @@ const store = compose(applyMiddleware(...middlewares))(createStore)(
 const persistor = persistStore(store);
 
 export { store, persistor };
-

@@ -17,7 +17,7 @@ const JourneyLines = ({ onUpdateLine }) => {
 
   const selectLine = line => {
     onUpdateLine(line._id);
-    dispatch(Actions.lines.selectedLine(line));
+    dispatch(Actions.selectedLine.selectLine(line));
   };
 
   if (lines && lines.length === 0) {

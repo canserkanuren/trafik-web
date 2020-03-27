@@ -2,7 +2,7 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 import React, { useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Button, DatePicker } from 'rsuite';
 import styled, { ThemeContext } from 'styled-components';
 import { device } from '../../../config/styles';
@@ -11,6 +11,7 @@ import Select from '../../common/select';
 
 const JourneyStations = ({ stations }) => {
   const themeContext = useContext(ThemeContext);
+  const selectedLine = useSelector(state => state.selectedLine.selectedLine);
   // à faire avec redux pour avoir l'info autre part que dans ce composant
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -43,6 +44,8 @@ const JourneyStations = ({ stations }) => {
     callbackUpdateStation(arrivalStation, setDepartureStations);
   }, [arrivalStation]);
 
+  const isSelectedLineDisabled = () => !selectedLine;
+
   const callbackUpdateStation = (idStation, callback) => {
     const s = [...allStations.filter(st => st.value !== idStation)];
     callback(s);
@@ -65,18 +68,21 @@ const JourneyStations = ({ stations }) => {
   return (
     <JourneyStationsContainer>
       <Select
+        disabled={isSelectedLineDisabled()}
         list={departureStations}
         placeholder={t('journeys.departureStationSelection')}
         onSelect={setDepartureStation}
         value={departureStation}
       />
       <Select
+        disabled={isSelectedLineDisabled()}
         list={arrivalStations}
         placeholder={t('journeys.arrivalStationSelection')}
         onSelect={setArrivalStation}
         value={arrivalStation}
       />
       <DatePicker
+        disabled={isSelectedLineDisabled()}
         format='YYYY-MM-DD'
         placeholder={t('journeys.departureTime')}
         hideSeconds={() => true}
@@ -94,6 +100,7 @@ const JourneyStations = ({ stations }) => {
         <Button
           style={{ backgroundColor: themeContext.tertiary }}
           onClick={handleJourneyValidation}
+          disabled={isSelectedLineDisabled()}
         >
           {t('journeys.validateForm')}
         </Button>

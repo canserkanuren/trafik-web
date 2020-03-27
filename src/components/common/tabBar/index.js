@@ -1,10 +1,10 @@
 import { faCog } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import styled, { ThemeContext } from 'styled-components';
 import trafikLogo from '../../../assets/logos/trafik/default-monochrome.svg';
 import { device } from '../../../config/styles';
+import Icon from '../icon';
 
 const TabBar = () => {
   const history = useHistory();
@@ -13,7 +13,7 @@ const TabBar = () => {
   return (
     <TabBarContainer>
       <TabBarImage src={trafikLogo}></TabBarImage>
-      <FontAwesomeIcon
+      <Icon
         size='lg'
         icon={faCog}
         color={themeContext.tertiary}

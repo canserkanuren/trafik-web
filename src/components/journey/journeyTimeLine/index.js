@@ -3,6 +3,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Timeline } from 'rsuite';
 import styled from 'styled-components';
+import { v4 as uuid } from 'uuid';
 
 const JourneyTimeLine = ({ stops }) => {
   const selectedLine = useSelector(state => state.lines.selectedLine);
@@ -15,7 +16,11 @@ const JourneyTimeLine = ({ stops }) => {
     <>
       {stops.map(stop => (
         <>
-          <JourneyTimeLineContainer align={'left'}>
+          <JourneyTimeLineContainer
+            key={uuid}
+            selectedLine={selectedLine}
+            align={'left'}
+          >
             {stop.mode === 'waiting' ? (
               <>
                 <p></p>
@@ -26,7 +31,7 @@ const JourneyTimeLine = ({ stops }) => {
                   <>
                     <JourneyTimeLineItem
                       selectedLine={selectedLine}
-                      key={stop.name}
+                      key={uuid()}
                     >
                       <p>{s.name}</p>
                     </JourneyTimeLineItem>

@@ -8,21 +8,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import styled, { ThemeContext } from 'styled-components';
 import { device } from '../../../../config/styles';
-import { useTranslation } from 'react-i18next';
+import Icon from '../../../common/icon';
 
 const JourneyHeader = ({ journey }) => {
   const { t } = useTranslation();
   const themeContext = useContext(ThemeContext);
-  const selectedLine = useSelector(state => state.lines.selectedLine);
+  const selectedLine = useSelector(state => state.selectedLine.selectedLine);
   return (
     <JourneyDetailResults>
       <JourneyDepartArrival>
         <FontAwesomeIcon size='lg' icon={faMap} color={themeContext.tertiary} />
         <h4>{moment(journey.departureTime).format('hh:mm')}</h4>
-        <FontAwesomeIcon
+        <Icon
           size='lg'
           icon={faLongArrowAltRight}
           color={themeContext.tertiary}
@@ -30,22 +31,11 @@ const JourneyHeader = ({ journey }) => {
         <h4>{moment(journey.arrivalTime).format('hh:mm')}</h4>
       </JourneyDepartArrival>
       <JourneyDepartArrival>
-        <FontAwesomeIcon
-          size='lg'
-          icon={faTrain}
-          color={themeContext.tertiary}
-        />
-        <h4>
-          {t('journeys.line')}
-          {selectedLine.name.toUpperCase()}
-        </h4>
+        <Icon size='lg' icon={faTrain} color={themeContext.tertiary} />
+        <h4>{`${t('journeys.line')} ${selectedLine.name.toUpperCase()}`}</h4>
       </JourneyDepartArrival>
       <JourneyDepartArrival>
-        <FontAwesomeIcon
-          size='lg'
-          icon={faClock}
-          color={themeContext.tertiary}
-        />
+        <Icon size='lg' icon={faClock} color={themeContext.tertiary} />
         <JourneyDuration>{journey.duration / 60} mn</JourneyDuration>
       </JourneyDepartArrival>
     </JourneyDetailResults>

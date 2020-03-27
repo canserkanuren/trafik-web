@@ -1,16 +1,15 @@
-import { INIT_LINES } from '../actions/lines';
+import { SELECTED_LINE } from '../actions/selectedLine';
 
 const initialState = {
-  lines: [],
-  selectedLine: {}
+  selectedLine: null
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case INIT_LINES:
+    case SELECTED_LINE:
       return {
         ...state,
-        lines: action.payload
+        selectedLine: action.payload
       };
     default:
       return state;
