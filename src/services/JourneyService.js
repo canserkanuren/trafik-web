@@ -1,8 +1,8 @@
 import Axios from 'axios';
-import { baseUrl } from '../config/constants';
+import { getBaseUrl } from '../config/constants';
 
 const getJourneyFromApi = (fromStation, toStation, departureTime) => {
-  return Axios.get(`${baseUrl}/journeys`, {
+  return Axios.get(`${getBaseUrl()}/journeys`, {
     params: {
       fromStation,
       toStation,

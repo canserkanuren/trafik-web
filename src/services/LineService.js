@@ -1,8 +1,8 @@
 import Axios from 'axios';
-import { baseUrl } from '../config/constants';
+import { getBaseUrl } from '../config/constants';
 
 const getAllLines = () => {
-  return Axios.get(`${baseUrl}/lines`);
+  return Axios.get(`${getBaseUrl()}/lines`);
 };
 
 export { getAllLines };

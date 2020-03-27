@@ -1,8 +1,8 @@
 import Axios from 'axios';
-import { baseUrl } from '../config/constants';
+import { getBaseUrl } from '../config/constants';
 
 const getStationsPerLine = id => {
-  return Axios.get(`${baseUrl}/lines/${id}/stations`);
+  return Axios.get(`${getBaseUrl()}/lines/${id}/stations`);
 };
 
 export { getStationsPerLine };
